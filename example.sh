@@ -12,7 +12,7 @@ curl -s http://localhost:8080/api/boards \
 		\"name\": \"Birthday\", \
 		\"private\": false, \
 		\"members\": [123, 456] \
-	}" | $assert success=true "create board"
+	}" | $assert "create board" success=true
 	
 curl -s http://localhost:8080/api/boards/123/posts \
 	-d "{
@@ -20,7 +20,7 @@ curl -s http://localhost:8080/api/boards/123/posts \
 		\"type\": \"text\", \
 		\"embeds\": [], \
 		\"content\": \"hello, world\" \
-	}" | $assert success=true "create post"
+	}" | $assert "create post" success=true
 	
 curl -s http://localhost:8080/api/users/189713730/location | $assert "get user location" success=true
 
