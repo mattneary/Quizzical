@@ -2,6 +2,10 @@ Quizzical
 =========
 Quizzical is a minimal suite of shell and ruby scripts for testing JSON APIs using CURL and automated generation of docs from these tests.
 
+Installation
+------------
+Download the source and run `lib/install.sh`. Once that has run, Quizzical is setup on your system. For future updates the script can simply be run again.
+
 Getting Started
 ---------------
 Quizzical solves a very specific problem - testing a JSON API with CURL. CURL has a very clear and concise notation for expressing the specifications of an API in docs, etc. Additionally, CURL is a cross-platform standard in HTTP requests.
@@ -21,13 +25,13 @@ Testing and Spec Generation
 To test a script of curls, run the following.
 
 ```sh
-./Quizzical/quizzical/test tests.sh
+quizzical tests.sh
 ```
 
 To generate docs from the same file, run this, as a function of tests and an output markdown file.
 
 ```sh
-./Quizzical/quizzical/docs.sh tests.sh docs.md
+quizzical tests.sh docs.md
 ```
 
 Script Control Flow
