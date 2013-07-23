@@ -17,6 +17,9 @@ class Keypair
 	end
 	def initialize(args)
 		@criteria = []
+		if args[0] == '#raw'
+			@criteria =  [['noparse', true]]			
+		end
 		args.each do |criterion|
 			@criteria.push [criterion.split('=')[0], criterion.split('=')[1]]
 		end
@@ -30,24 +33,29 @@ read = ""
 STDIN.read.split("\n").each do |line|
 	read += line
 end
-resp = JSON.parse(read)
 
-passed = true 
-criteria.each do |criterion|
-	if criterion[0] == "@"
-		if resp == criterion[1]
+if criteria[0][0] == 'noparse'
+	puts "Passed"	
+else
+	resp = JSON.parse(read)
+	
+	passed = true 
+	criteria.each do |criterion|
+		if criterion[0] == "@"
+			if resp == criterion[1]
+				passed = passed
+			else
+				passed = false
+			end
+		end
+	
+		if resp[criterion[0]] == criterion[1]
 			passed = passed
 		else
 			passed = false
 		end
 	end
-
-	if resp[criterion[0]] == criterion[1]
-		passed = passed
-	else
-		passed = false
+	if passed
+		puts "Passed"
 	end
-end
-if passed
-	puts "Passed"
 end
