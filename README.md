@@ -34,6 +34,6 @@ Script Control Flow
 -------------------
 1. `test {tests}` - Initiate testing by passing a curl script to the test script.
 2. `{tests} assert.sh` - *test* then fires your script with the assertion checker as the first argument.
-3. `curl -s... | assert.sh {test name} {criteria...}` - Your curl script then pipes responses to the assertion checker, with the test name and criteria to assess.
+3. `curl -s... | $1 {test name} {criteria...}` - Your curl script then pipes responses to the assertion checker, with the test name and criteria to assess.
 4. `render {passed?}` - The render script is then run with an assessment of pass/fail.
 5. `echo "{passed?}: {test}"` - The result is rendered to the user.
