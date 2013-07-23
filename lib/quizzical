@@ -1,0 +1,23 @@
+QUIZZICAL_WAREHOUSE_DIR="${QUIZZICAL_WAREHOUSE_DIR:-$HOME/.quizzical}"
+
+if [ ! -x "$METEOR_WAREHOUSE_DIR/test" ]; then
+  if [ -e "$METEOR_WAREHOUSE_DIR" ]; then
+    echo "'$METEOR_WAREHOUSE_DIR' exists, but '$METEOR_WAREHOUSE_DIR/test' is not executable." 1>&2
+    echo 1>&2
+    echo "Remove it and try again." 1>&2
+    exit 1
+  fi
+  # install maybe...
+fi
+
+if [ -z $2 ]
+then
+	echo "Performing tests in $1..."	
+	$QUIZZICAL_WAREHOUSE_DIR/test $@
+	echo ""
+	echo "Tests complete."
+else
+	echo "Generating docs to $2..."
+	$QUIZZICAL_WAREHOUSE_DIR/docs.sh $@	
+	echo "Docs generated."
+fi

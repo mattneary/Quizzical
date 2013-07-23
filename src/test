@@ -1,0 +1,2 @@
+quiz=$(dirname $0)
+./$1 $quiz/assert.sh
