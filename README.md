@@ -1,6 +1,6 @@
 Quizzical
 =========
-Quizzical is a minimal suite of shell and ruby scripts for testing JSON APIs using CURL and automated generation of docs from these tests.
+Quizzical is a command-line utility for the testing and documentation of JSON APIs. Both tests and specs are specified through CURL commands, piped to an assertion checker provided with the criteria defining `success`.
 
 Installation
 ------------
