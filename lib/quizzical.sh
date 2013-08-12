@@ -1,15 +1,5 @@
 QUIZZICAL_WAREHOUSE_DIR="${QUIZZICAL_WAREHOUSE_DIR:-$HOME/.quizzical}"
 
-if [ ! -x "$METEOR_WAREHOUSE_DIR/test" ]; then
-  if [ -e "$METEOR_WAREHOUSE_DIR" ]; then
-    echo "'$METEOR_WAREHOUSE_DIR' exists, but '$METEOR_WAREHOUSE_DIR/test' is not executable." 1>&2
-    echo 1>&2
-    echo "Remove it and try again." 1>&2
-    exit 1
-  fi
-  # install maybe...
-fi
-
 if [ -z $1 ]; then
   echo "Quizzical is a test suite for JSON APIs."
   echo "Find out more at http://github.com/mattneary/quizzical."
@@ -20,7 +10,7 @@ if [ -z $1 ]; then
   echo "Run Tests:"
   echo "    quizzical tests.sh"
   echo ""
-  echo "Generate Documentations:"
+  echo "Generate Documentation:"
   echo "    quizzical tests.sh docs.md"
   exit 1
 fi
