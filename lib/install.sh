@@ -10,3 +10,4 @@ echo "Restart your terminal to use it in the form:"
 echo "    quizzical [tests file]"
 echo ""
 echo "Get more information at http://github.com/mattneary/Quizzical"
+
