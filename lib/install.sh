@@ -1,3 +1,4 @@
+#!/bin/bash
 QUIZZICAL_WAREHOUSE_DIR="${QUIZZICAL_WAREHOUSE_DIR:-$HOME/.quizzical}"
 BUILD_DIR=$(dirname $0)
 
