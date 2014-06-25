@@ -6,7 +6,7 @@ class Keypair
   def parse_criteria()
     @criteria.map { |criterion|
       criterion[1] = case criterion[1]
-      when /^"[^"]+"$/ then criterion[1][1..-2] #" weird quote syntax highlighting escape
+      when /^"[^"]+"$/ then criterion[1][1..-2]
       when "true" then true
       when "false" then false
       when /^[0-9]+$/ then criterion[1].to_i
@@ -21,7 +21,7 @@ class Keypair
       @criteria =  [['noparse', true]]      
     end
     args.each do |criterion|
-      @criteria.push [criterion.split('=')[0], criterion.split('=')[1]]
+      @criteria.push criterion.split('=')[0..1]
     end
     parse_criteria
   end
@@ -41,6 +41,7 @@ else
     resp = JSON.parse(read)
     passed = true 
     criteria.each do |criterion|
+      # handle whole-response equality
       if criterion[0] == "@"
 	if resp == criterion[1]
 	  passed = passed
@@ -49,6 +50,7 @@ else
 	end
       end
     
+      # check that the criteria continue to match
       if resp[criterion[0]] == criterion[1]
 	passed = passed
       else
@@ -62,3 +64,4 @@ else
     puts read
   end
 end
+
